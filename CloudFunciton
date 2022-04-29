@@ -14,7 +14,7 @@ void loop()
     {
         Particle.publish("task 3.3D particle - buddy system", "wave sensed");
     }
-    else if(action == 1) 
+    else if(action == 2) 
     {
         Particle.publish("task 3.3D particle - buddy system", "pat sensed");
     }
