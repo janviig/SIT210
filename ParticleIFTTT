@@ -1,0 +1,27 @@
+#define delayTime 10000
+int trigger = A4;
+int lightTaken;
+
+void setup()
+{
+    pinMode(trigger, OUTPUT);
+}
+
+void loop()
+{
+    lightTaken = analogRead(trigger);
+    String brightness = String(lightTaken);
+    
+    if(lightTaken > 40) 
+    {
+        Particle.publish("sunlight", "sunlight", PRIVATE);
+        Particle.publish("brightness", brightness, PRIVATE);
+    }
+    
+    else if(lightTaken <= 40) 
+    {
+        Particle.publish("sunlight", "noSunlightDetected", PRIVATE);
+        Particle.publish("brightness", brightness, PRIVATE);
+    }
+    delay(delayTime);
+}
